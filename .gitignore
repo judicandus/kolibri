@@ -149,3 +149,4 @@ cext_cache
 *.gz
 # Ignore our special file size cache
 *.file_size
+.qwen/

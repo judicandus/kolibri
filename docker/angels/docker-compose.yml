@@ -1,0 +1,11 @@
+services:
+  angels-kolibri:
+    build:
+      context: ../..
+      dockerfile: docker/angels/Dockerfile
+    container_name: angels-kolibri-test
+    ports:
+      - "9090:8080"
+    volumes:
+      - /home/judicandus/kolibri_data:/kolibrihome
+    restart: unless-stopped
