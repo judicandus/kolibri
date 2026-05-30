@@ -33,6 +33,12 @@ registerNavItem({
         route: baseRoutes.bookmarks.path,
         name: baseRoutes.bookmarks.name,
       },
+      {
+        label: 'AI',
+        icon: 'recommended',
+        route: baseRoutes.ai.path,
+        name: baseRoutes.ai.name,
+      },
     ];
   },
   get label() {

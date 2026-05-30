@@ -10,6 +10,7 @@ import TopicsPage from '../views/TopicsPage';
 import TopicsContentPage from '../views/TopicsContentPage';
 import ContentUnavailablePage from '../views/ContentUnavailablePage';
 import BookmarkPage from '../views/BookmarkPage.vue';
+import AiPage from '../views/AiPage.vue';
 import ExploreLibrariesPage from '../views/ExploreLibrariesPage';
 import classesRoutes from './classesRoutes';
 
@@ -165,6 +166,16 @@ export default [
       next();
     },
     component: BookmarkPage,
+  },
+  {
+    name: PageNames.AI_PAGE,
+    path: '/ai',
+    handler: (to, from, next) => {
+      store.commit('SET_PAGE_NAME', PageNames.AI_PAGE);
+      store.commit('CORE_SET_PAGE_LOADING', false);
+      next();
+    },
+    component: AiPage,
   },
   {
     name: PageNames.EXPLORE_LIBRARIES,

@@ -111,7 +111,7 @@
           .map(r => {
             return this.contentNodesMap[r.contentnode_id] || null;
           })
-          .filter(Boolean);
+          .filter(n => n && n.title !== '__class_thumb__');
       },
       lessonResources() {
         return (this.currentLesson && this.currentLesson.resources) || [];

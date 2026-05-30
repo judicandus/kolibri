@@ -3,6 +3,8 @@
   <CardLink
     :to="to"
     class="base-card"
+    :class="{ 'has-thumbnail': !!thumbnailUrl }"
+    :thumbnailUrl="thumbnailUrl"
   >
     <div>
       <KFixedGrid
@@ -125,6 +127,14 @@
         type: Boolean,
         required: false,
         default: true,
+      },
+      /**
+       * Optional thumbnail URL for background image
+       */
+      thumbnailUrl: {
+        type: String,
+        required: false,
+        default: '',
       },
     },
   };

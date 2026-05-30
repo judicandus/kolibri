@@ -1,55 +1,63 @@
 <template>
 
-  <section>
+  <section v-if="lesson">
     <h2>
       <KLabeledIcon
         icon="forward"
-        :label="header"
+        :label="$tr('continueLearningFromClassesHeader')"
       />
     </h2>
 
-    <CardGrid :gridType="1">
-      <template v-if="fromClasses">
-        <ResourceCard
-          v-for="(resource, idx) in uniqueResumableClassesResources"
-          :key="`resource-${idx}`"
-          :contentNode="resource.contentNode"
-          :to="genContentLinkBackLinkCurrentPage(resource.contentNode.id, true)"
-          :collectionTitle="getResourceClassName(resource)"
-        />
-        <QuizCard
-          v-for="(quiz, idx) in resumableClassesQuizzes"
-          :key="`quiz-${idx}`"
-          :quiz="quiz"
-          :to="getClassQuizLink(quiz)"
-          :collectionTitle="getQuizClassName(quiz)"
-          showThumbnail
-        />
-      </template>
-      <template v-else>
-        <ResourceCard
-          v-for="(contentNode, idx) in resumableContentNodes"
-          :key="idx"
-          :contentNode="contentNode"
-          :to="genContentLinkBackLinkCurrentPage(contentNode.id, true)"
-          :collectionTitle="getContentNodeTopicName(contentNode)"
-          @openCopiesModal="openCopiesModal"
-        />
-      </template>
-    </CardGrid>
-    <KButton
-      v-if="moreResumableContentNodes"
-      style="margin-top: 16px"
-      appearance="basic-link"
-      @click="fetchMoreResumableContentNodes"
+    <router-link
+      :to="lessonLink"
+      class="hero-card"
+      :class="[$computedClass({ ':focus': $coreOutline })]"
     >
-      {{ coreString('viewMoreAction') }}
-    </KButton>
-    <CopiesModal
-      v-if="displayedCopies.length"
-      :copies="displayedCopies"
-      @closeModal="displayedCopies = []"
-    />
+      <img
+        v-if="thumbnailUrl"
+        class="hero-image"
+        :src="thumbnailUrl"
+        alt=""
+        loading="lazy"
+      >
+      <div class="hero-overlay">
+        <span class="hero-badge">
+          {{ $tr('continueWatching') }}
+        </span>
+        <p
+          v-if="className"
+          class="hero-class"
+        >
+          {{ className }}
+        </p>
+        <h3 class="hero-title">
+          {{ lesson.title }}
+        </h3>
+        <div
+          v-if="firstResource"
+          class="hero-meta"
+        >
+          <LearningActivityLabel
+            :contentNode="firstResource"
+            :hideDuration="false"
+          />
+        </div>
+        <div class="hero-progress-wrapper">
+          <div
+            class="hero-progress-track"
+            role="progressbar"
+            :aria-valuemin="0"
+            :aria-valuemax="100"
+            :aria-valuenow="lessonProgressPercent"
+          >
+            <div
+              class="hero-progress-fill"
+              :style="{ width: lessonProgressPercent + '%' }"
+            />
+          </div>
+        </div>
+      </div>
+    </router-link>
   </section>
 
 </template>
@@ -57,121 +65,188 @@
 
 <script>
 
-  import last from 'lodash/last';
-  import uniqBy from 'lodash/uniqBy';
   import { computed } from 'vue';
-  import commonCoreStrings from 'kolibri/uiText/commonCoreStrings';
-  import { get } from '@vueuse/core';
-  import CardGrid from '../cards/CardGrid';
-  import QuizCard from '../cards/QuizCard';
-  import ResourceCard from '../cards/ResourceCard';
-  import CopiesModal from '../CopiesModal';
   import useLearnerResources from '../../composables/useLearnerResources';
-  import useContentLink from '../../composables/useContentLink';
+  import LearningActivityLabel from '../LearningActivityLabel';
 
   /**
-   * Shows learner's resources and quizzes that are in progress.
+   * Shows a single horizontal hero card for the most recent active lesson.
+   * The card displays the lesson's first resource thumbnail as a full-bleed
+   * background image with lesson info overlaid on the left side.
    */
   export default {
     name: 'ContinueLearning',
     components: {
-      CardGrid,
-      ResourceCard,
-      QuizCard,
-      CopiesModal,
+      LearningActivityLabel,
     },
-    mixins: [commonCoreStrings],
-    setup() {
-      const {
-        resumableClassesQuizzes,
-        resumableClassesResources,
-        resumableContentNodes,
-        moreResumableContentNodes,
-        fetchMoreResumableContentNodes,
-        getClass,
-        getClassQuizLink,
-      } = useLearnerResources();
+    setup(props) {
+      const { getClass, getClassLessonLink } = useLearnerResources();
 
-      // A single resource can be in more lessons and in more classes
-      // and progress information is shared between all classes and lessons
-      // where it belongs to.
-      // In such case we want to display it only once for its first occurence.
-      const uniqueResumableClassesResources = computed(() => {
-        return uniqBy(get(resumableClassesResources), 'contentNodeId');
+      const className = computed(() => {
+        if (!props.lesson) return '';
+        const cls = getClass(props.lesson.collection);
+        return cls ? cls.name : '';
       });
 
-      function getResourceClassName(resource) {
-        const resourceClass = getClass(resource.classId);
-        return resourceClass ? resourceClass.name : '';
-      }
+      const lessonLink = computed(() => {
+        return getClassLessonLink(props.lesson);
+      });
 
-      function getQuizClassName(quiz) {
-        const quizClass = getClass(quiz.collection);
-        return quizClass ? quizClass.name : '';
-      }
-
-      function getContentNodeTopicName(contentNode) {
-        if (!contentNode || !contentNode.ancestors || !contentNode.ancestors.length > 0) {
-          return '';
+      const firstResource = computed(() => {
+        if (
+          !props.lesson ||
+          !props.lesson.resources ||
+          !props.lesson.resources.length
+        ) {
+          return null;
         }
-        return last(contentNode.ancestors).title;
-      }
+        return props.lesson.resources[0].contentnode || null;
+      });
 
-      const { genContentLinkBackLinkCurrentPage } = useContentLink();
+      const thumbnailUrl = computed(() => {
+        if (!firstResource.value) return '';
+        return firstResource.value.thumbnail || '';
+      });
+
+      const lessonProgressPercent = computed(() => {
+        if (!props.lesson || !props.lesson.progress) return 0;
+        const { resource_progress, total_resources } = props.lesson.progress;
+        if (!total_resources) return 0;
+        return Math.round((resource_progress / total_resources) * 100);
+      });
 
       return {
-        resumableClassesQuizzes,
-        resumableContentNodes,
-        moreResumableContentNodes,
-        fetchMoreResumableContentNodes,
-        uniqueResumableClassesResources,
-        getClassQuizLink,
-        getQuizClassName,
-        getResourceClassName,
-        getContentNodeTopicName,
-        genContentLinkBackLinkCurrentPage,
+        className,
+        lessonLink,
+        firstResource,
+        thumbnailUrl,
+        lessonProgressPercent,
       };
     },
     props: {
-      /**
-       * If `true`, classes resources and quizess will be displayed.
-       * Otherwise resources outside of classes will be displayed.
-       * The section header will also differ.
-       */
-      fromClasses: {
-        type: Boolean,
-        default: false,
-      },
-    },
-    data() {
-      return {
-        displayedCopies: [],
-      };
-    },
-    computed: {
-      header() {
-        return this.fromClasses
-          ? this.$tr('continueLearningFromClassesHeader')
-          : this.$tr('continueLearningOnYourOwnHeader');
-      },
-    },
-    methods: {
-      openCopiesModal(copies) {
-        this.displayedCopies = copies;
+      lesson: {
+        type: Object,
+        required: true,
       },
     },
     $trs: {
-      continueLearningOnYourOwnHeader: {
-        message: 'Continue learning on your own',
-        context:
-          'Option to continue interacting with the resources (lessons, quizzes) in a self-directed way or through free exploration, rather than via material that coaches have prepared and made available in classes.',
-      },
       continueLearningFromClassesHeader: {
         message: 'Continue learning from your classes',
         context:
-          'Option to continue interacting with the resources (lessons, quizzes) coaches have prepared and made available in the classes learner is enrolled into.',
+          'Section header for the hero card linking to the most recent active lesson.',
+      },
+      continueWatching: {
+        message: 'Continue Watching',
+        context:
+          'Badge label on the hero card indicating the learner can continue this lesson.',
       },
     },
   };
 
 </script>
+
+
+<style lang="scss" scoped>
+
+  .hero-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 200px;
+    overflow: hidden;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 75% center;
+  }
+
+  .hero-overlay {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 200px;
+    padding: 24px;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      transparent 70%
+    );
+  }
+
+  .hero-badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 4px 12px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  .hero-class {
+    margin: 0 0 4px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .hero-title {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-meta {
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.85);
+
+    /deep/ .label,
+    /deep/ .duration {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /deep/ svg {
+      fill: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  .hero-progress-wrapper {
+    max-width: 37.5%;
+  }
+
+  .hero-progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+
+  .hero-progress-fill {
+    height: 100%;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+</style>

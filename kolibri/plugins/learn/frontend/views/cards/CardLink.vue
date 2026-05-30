@@ -3,8 +3,15 @@
   <router-link
     :to="to"
     class="card-link"
-    :class="themeClasses.link"
+    :class="[themeClasses.link, { 'card-link-with-thumbnail': !!thumbnailUrl }]"
   >
+    <img
+      v-if="thumbnailUrl"
+      :src="thumbnailUrl"
+      alt=""
+      class="card-thumbnail"
+      loading="lazy"
+    >
     <slot></slot>
   </router-link>
 
@@ -19,6 +26,11 @@
       to: {
         type: Object,
         required: true,
+      },
+      thumbnailUrl: {
+        type: String,
+        required: false,
+        default: '',
       },
     },
     computed: {
@@ -54,6 +66,22 @@
     &:hover {
       @extend %dropshadow-6dp;
     }
+  }
+
+  .card-link-with-thumbnail {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 75% center;
+    z-index: 0;
   }
 
 </style>

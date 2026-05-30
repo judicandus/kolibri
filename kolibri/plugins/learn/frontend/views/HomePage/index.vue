@@ -25,22 +25,16 @@
           short
         />
         <ContinueLearning
-          v-if="continueLearning"
+          v-if="mostRecentLesson"
           class="section"
-          :fromClasses="continueLearningFromClasses"
-          :data-test="
-            continueLearningFromClasses
-              ? 'continueLearningFromClasses'
-              : 'continueLearningOnYourOwn'
-          "
+          :lesson="mostRecentLesson"
+          data-test="continueLearningFromClasses"
         />
-        <AssignedLessonsCards
-          v-if="hasActiveClassesLessons"
+        <RecentlyAccessed
+          v-if="recentResources.length > 0"
           class="section"
-          :lessons="activeClassesLessons"
-          displayClassName
-          recent
-          data-test="recentLessons"
+          :resources="recentResources"
+          data-test="recentlyAccessed"
         />
         <AssignedQuizzesCards
           v-if="hasActiveClassesQuizzes"
@@ -58,8 +52,8 @@
           :short="
             Boolean(
               displayClasses ||
-                continueLearning ||
-                hasActiveClassesLessons ||
+                mostRecentLesson ||
+                recentResources.length > 0 ||
                 hasActiveClassesQuizzes,
             )
           "
@@ -75,6 +69,8 @@
 
   import { computed, getCurrentInstance } from 'vue';
   import { get, set } from '@vueuse/core';
+  import uniqBy from 'lodash/uniqBy';
+  import flatMapDepth from 'lodash/flatMapDepth';
   import client from 'kolibri/client';
   import urls from 'kolibri/urls';
   import useUser from 'kolibri/composables/useUser';
@@ -89,13 +85,13 @@
   import { setContentNodeProgress } from '../../composables/useContentNodeProgress';
   import { inClasses } from '../../composables/useCoreLearn';
   import { PageNames } from '../../constants';
-  import AssignedLessonsCards from '../classes/AssignedLessonsCards';
   import AssignedQuizzesCards from '../classes/AssignedQuizzesCards';
   import YourClasses from '../YourClasses';
   import LearnAppBarPage from '../LearnAppBarPage';
   import PostSetupModalGroup from '../../../../device/frontend/views/PostSetupModalGroup.vue';
   import commonLearnStrings from './../commonLearnStrings';
   import ContinueLearning from './ContinueLearning';
+  import RecentlyAccessed from './RecentlyAccessed';
   import ExploreChannels from './ExploreChannels';
 
   /**
@@ -108,10 +104,10 @@
   export default {
     name: 'HomePage',
     components: {
-      AssignedLessonsCards,
       AssignedQuizzesCards,
       YourClasses,
       ContinueLearning,
+      RecentlyAccessed,
       ExploreChannels,
       LearnAppBarPage,
       ResourceSyncingUiAlert,
@@ -136,27 +132,35 @@
         learnerFinishedAllClasses,
       } = useLearnerResources();
 
-      const continueLearningFromClasses = computed(
-        () =>
-          (get(isUserLoggedIn) && get(resumableClassesQuizzes).length > 0) ||
-          get(resumableClassesResources).length > 0,
-      );
-      const continueLearningOnYourOwn = computed(
-        () =>
-          get(isUserLoggedIn) &&
-          get(learnerFinishedAllClasses) &&
-          get(canAccessUnassignedContent) &&
-          get(resumableContentNodes).length > 0,
-      );
+      // Hero card: first active lesson from any class
+      const mostRecentLesson = computed(() => {
+        const lessons = get(activeClassesLessons);
+        return lessons.length > 0 ? lessons[0] : null;
+      });
 
-      const continueLearning = computed(
-        () => get(continueLearningFromClasses) || get(continueLearningOnYourOwn),
-      );
-
-      const hasActiveClassesLessons = computed(
-        () =>
-          get(isUserLoggedIn) && get(activeClassesLessons) && get(activeClassesLessons).length > 0,
-      );
+      // Recently accessed: last 4 resources from active class lessons
+      const recentResources = computed(() => {
+        const allResources = flatMapDepth(
+          get(classes),
+          c =>
+            c.lessons.map(l =>
+              l.resources.map(r => ({
+                contentNodeId: r.contentnode_id,
+                progress: r.progress,
+                lessonId: l.id,
+                classId: c.id,
+                contentNode: r.contentnode,
+              })),
+            ),
+          2,
+        );
+        return uniqBy(
+          allResources.filter(
+            r => r.contentNode && r.contentNode.title !== '__class_thumb__',
+          ),
+          'contentNodeId',
+        ).slice(0, 4);
+      });
       const hasActiveClassesQuizzes = computed(
         () =>
           get(isUserLoggedIn) && get(activeClassesQuizzes) && get(activeClassesQuizzes).length > 0,
@@ -225,10 +229,9 @@
         classes,
         activeClassesLessons,
         activeClassesQuizzes,
-        hasActiveClassesLessons,
+        mostRecentLesson,
+        recentResources,
         hasActiveClassesQuizzes,
-        continueLearningFromClasses,
-        continueLearning,
         displayExploreChannels,
         displayClasses,
         missingResources,

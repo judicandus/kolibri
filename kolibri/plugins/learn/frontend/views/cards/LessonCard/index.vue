@@ -2,7 +2,7 @@
 
   <BaseCard
     v-if="lesson"
-    v-bind="{ to, title, collectionTitle, completedLabel, inProgressLabel }"
+    v-bind="{ to, title, collectionTitle, completedLabel, inProgressLabel, thumbnailUrl }"
   />
 
 </template>
@@ -10,6 +10,7 @@
 
 <script>
 
+  import { ref, onMounted } from 'vue';
   import commonCoreStrings from 'kolibri/uiText/commonCoreStrings';
   import BaseCard from '../BaseCard';
 
@@ -19,6 +20,27 @@
       BaseCard,
     },
     mixins: [commonCoreStrings],
+    setup(props) {
+      const thumbnailUrl = ref('');
+
+      onMounted(() => {
+        const resources = props.lesson && props.lesson.resources;
+        if (resources && resources.length) {
+          for (const resource of resources) {
+            if (
+              resource.contentnode &&
+              resource.contentnode.thumbnail &&
+              resource.contentnode.title !== '__class_thumb__'
+            ) {
+              thumbnailUrl.value = resource.contentnode.thumbnail;
+              break;
+            }
+          }
+        }
+      });
+
+      return { thumbnailUrl };
+    },
     props: {
       lesson: {
         type: Object,

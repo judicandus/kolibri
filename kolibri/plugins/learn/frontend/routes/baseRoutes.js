@@ -16,4 +16,8 @@ export default {
     name: PageNames.BOOKMARKS,
     path: '/bookmarks',
   },
+  ai: {
+    name: PageNames.AI_PAGE,
+    path: '/ai',
+  },
 };
