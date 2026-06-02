@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  angels-ai:
+    build: .
+    container_name: angels-ai
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.angels-ai.rule=Host(`ai.angelsforedu.org`)"
+      - "traefik.http.routers.angels-ai.entrypoints=http"
+      - "traefik.http.middlewares.angels-ai-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.angels-ai.middlewares=angels-ai-https-redirect"
+      - "traefik.http.routers.angels-ai-secure.rule=Host(`ai.angelsforedu.org`)"
+      - "traefik.http.routers.angels-ai-secure.entrypoints=https"
+      - "traefik.http.routers.angels-ai-secure.tls=true"
+      - "traefik.http.routers.angels-ai-secure.tls.certresolver=myresolver"
+      - "traefik.http.routers.angels-ai-secure.service=angels-ai"
+      - "traefik.http.services.angels-ai.loadbalancer.server.url=http://172.17.0.1:8100"
+    ports:
+      - "8100:8000"
+    environment:
+      - ALIBABA_API_KEY=${ALIBABA_API_KEY}
+      - AUTH_PASSWORD=${AUTH_PASSWORD:-angels2026}
+      - DATA_DIR=/app/data
+    volumes:
+      - ./data:/app/data

@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+venv_test/
+.env
+
+# Logs
+*.log
+
+# Data files
+data/
+corpus/processed/
+
+# Test results
+tests/results*/
+tests/*.json
+
+# Large PDFs (keep only in production)
+AE-Material/**/*.pdf
+
+# Large corpus files (too big for git)
+corpus/*.epub
+corpus/*.zip
+AE-Material/*.docx
+CEFR/*.pdf
+corpus/egw_api/*.txt
+corpus/bible/*.txt
+corpus/raw/*.txt
+
+# Old/deprecated files
+*_old.*
+docker-compose_old.yml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,578 @@
+[
+  {
+    "code": "AA",
+    "lang": "en",
+    "title": "The Acts of the Apostles",
+    "book_id": 127,
+    "file": "AA_en.txt",
+    "paragraphs": 1587,
+    "characters": 877567
+  },
+  {
+    "code": "AA",
+    "lang": "es",
+    "title": "Los Hechos de los Ap\u00f3stoles",
+    "book_id": 198,
+    "file": "AA_es.txt",
+    "paragraphs": 1582,
+    "characters": 894400
+  },
+  {
+    "code": "AA",
+    "lang": "fr",
+    "title": "Conqu\u00e9rants Pacifiques",
+    "book_id": 158,
+    "file": "AA_fr.txt",
+    "paragraphs": 1617,
+    "characters": 931032
+  },
+  {
+    "code": "AA",
+    "lang": "pt",
+    "title": "Atos Dos Ap\u00f3stolos",
+    "book_id": 1806,
+    "file": "AA_pt.txt",
+    "paragraphs": 1598,
+    "characters": 871558
+  },
+  {
+    "code": "AH1Burm",
+    "lang": "my",
+    "title": "\u1005\u1036\u1015\u103c\u1021\u102d\u1019\u103a\u1011\u1031\u102c\u1004\u103a (\u1015\u1011\u1019\u1010\u103d\u1032)",
+    "book_id": 14746,
+    "file": "AH1Burm_my.txt",
+    "paragraphs": 751,
+    "characters": 486890
+  },
+  {
+    "code": "CCB1",
+    "lang": "my",
+    "title": "\u1021\u101e\u1004\u103a\u1038\u1010\u1031\u102c\u103a\u1021\u1010\u103d\u1000 \u101e\u103c\u101d\u102b\u1012\u1019\u103b\u102c\u1038\u104b I",
+    "book_id": 12192,
+    "file": "CCB1_my.txt",
+    "paragraphs": 829,
+    "characters": 552482
+  },
+  {
+    "code": "CCB2",
+    "lang": "my",
+    "title": "\u1021\u101e\u1004\u103a\u1038\u1010\u1031\u102c\u103a\u1021\u1010\u103d\u1000 \u101e\u103c\u101d\u102b\u1012\u1019\u103b\u102c\u1038\u104b II",
+    "book_id": 12525,
+    "file": "CCB2_my.txt",
+    "paragraphs": 1059,
+    "characters": 637377
+  },
+  {
+    "code": "CCh1",
+    "lang": "th",
+    "title": "\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e23\u0e34\u0e2a\u0e15\u0e4c\u0e08\u0e31\u0e01\u0e23 \u0e40\u0e25\u0e48\u0e21\u0e17\u0e35\u0e48 1",
+    "book_id": 11859,
+    "file": "CCh1_th.txt",
+    "paragraphs": 708,
+    "characters": 406757
+  },
+  {
+    "code": "CChTh",
+    "lang": "th",
+    "title": "\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e23\u0e34\u0e2a\u0e15\u0e4c\u0e08\u0e31\u0e01\u0e23 \u0e40\u0e25\u0e48\u0e21\u0e17\u0e35\u0e48 2",
+    "book_id": 12552,
+    "file": "CChTh_th.txt",
+    "paragraphs": 1045,
+    "characters": 507082
+  },
+  {
+    "code": "COL",
+    "lang": "en",
+    "title": "Christ\u2019s Object Lessons",
+    "book_id": 15,
+    "file": "COL_en.txt",
+    "paragraphs": 1135,
+    "characters": 588778
+  },
+  {
+    "code": "COL",
+    "lang": "es",
+    "title": "Palabras de Vida del Gran Maestro",
+    "book_id": 210,
+    "file": "COL_es.txt",
+    "paragraphs": 1126,
+    "characters": 614545
+  },
+  {
+    "code": "COL",
+    "lang": "fr",
+    "title": "Les Paraboles de J\u00e9sus",
+    "book_id": 197,
+    "file": "COL_fr.txt",
+    "paragraphs": 1124,
+    "characters": 636608
+  },
+  {
+    "code": "COL",
+    "lang": "pt",
+    "title": "Par\u00e1bolas de Jesus",
+    "book_id": 1931,
+    "file": "COL_pt.txt",
+    "paragraphs": 1088,
+    "characters": 573876
+  },
+  {
+    "code": "COLB",
+    "lang": "my",
+    "title": "\u1001\u101b\u1005\u103a\u1010\u1031\u102c\u103a\u104f\u101e\u101b\u102f\u1015\u103a\u1015\u103c \u1029\u101d\u102b\u1012\u1019\u103b\u102c\u1038",
+    "book_id": 12531,
+    "file": "COLB_my.txt",
+    "paragraphs": 1221,
+    "characters": 814628
+  },
+  {
+    "code": "COLTh",
+    "lang": "th",
+    "title": "\u0e2d\u0e38\u0e17\u0e32\u0e2b\u0e23\u0e13\u0e4c\u0e08\u0e32\u0e01\u0e04\u0e33\u0e2a\u0e2d\u0e19\u0e02\u0e2d\u0e07\u0e1e\u0e23\u0e30\u0e04\u0e23\u0e34\u0e2a\u0e15\u0e4c",
+    "book_id": 14087,
+    "file": "COLTh_th.txt",
+    "paragraphs": 1161,
+    "characters": 577364
+  },
+  {
+    "code": "CT",
+    "lang": "en",
+    "title": "Counsels to Parents, Teachers, and Students",
+    "book_id": 23,
+    "file": "CT_en.txt",
+    "paragraphs": 1737,
+    "characters": 817904
+  },
+  {
+    "code": "CT",
+    "lang": "es",
+    "title": "Consejos para los Maestros",
+    "book_id": 162,
+    "file": "CT_es.txt",
+    "paragraphs": 1574,
+    "characters": 843511
+  },
+  {
+    "code": "CT",
+    "lang": "fr",
+    "title": "Conseils aux Educateurs aux Parents et aux \u00c9tudiants",
+    "book_id": 159,
+    "file": "CT_fr.txt",
+    "paragraphs": 1607,
+    "characters": 837093
+  },
+  {
+    "code": "CT",
+    "lang": "pt",
+    "title": "Conselhos Aos Pais, Professores E Estudantes",
+    "book_id": 1946,
+    "file": "CT_pt.txt",
+    "paragraphs": 1523,
+    "characters": 815529
+  },
+  {
+    "code": "ChSBur",
+    "lang": "my",
+    "title": "\u1001\u101b\u1005\u103a\u101a\u102c\u1014\u103a\u1021\u1019\u103e\u102f \u1011\u1019\u103a\u1038\u101b\u103d\u1000\u103a\u1001\u103c\u1004\u103a\u1038",
+    "book_id": 14768,
+    "file": "ChSBur_my.txt",
+    "paragraphs": 1187,
+    "characters": 672592
+  },
+  {
+    "code": "DA",
+    "lang": "ar",
+    "title": "\u0645\u0634\u062a\u0647\u0649 \u0627\u0644\u0623\u062c\u064a\u0627\u0644",
+    "book_id": 12363,
+    "file": "DA_ar.txt",
+    "paragraphs": 2565,
+    "characters": 1278018
+  },
+  {
+    "code": "DA",
+    "lang": "en",
+    "title": "The Desire of Ages",
+    "book_id": 130,
+    "file": "DA_en.txt",
+    "paragraphs": 2694,
+    "characters": 1593583
+  },
+  {
+    "code": "DA",
+    "lang": "es",
+    "title": "El Deseado de Todas las Gentes",
+    "book_id": 174,
+    "file": "DA_es.txt",
+    "paragraphs": 2732,
+    "characters": 1667588
+  },
+  {
+    "code": "DA",
+    "lang": "fr",
+    "title": "J\u00e9sus-Christ",
+    "book_id": 187,
+    "file": "DA_fr.txt",
+    "paragraphs": 2651,
+    "characters": 1701793
+  },
+  {
+    "code": "DA",
+    "lang": "pt",
+    "title": "O Desejado de Todas as Na\u00e7\u00f5es",
+    "book_id": 1813,
+    "file": "DA_pt.txt",
+    "paragraphs": 2639,
+    "characters": 1584125
+  },
+  {
+    "code": "Ed",
+    "lang": "en",
+    "title": "Education",
+    "book_id": 29,
+    "file": "Ed_en.txt",
+    "paragraphs": 1106,
+    "characters": 443858
+  },
+  {
+    "code": "Ed",
+    "lang": "es",
+    "title": "La Educaci\u00f3n",
+    "book_id": 188,
+    "file": "Ed_es.txt",
+    "paragraphs": 1082,
+    "characters": 463983
+  },
+  {
+    "code": "Ed",
+    "lang": "fr",
+    "title": "\u00c9ducation",
+    "book_id": 170,
+    "file": "Ed_fr.txt",
+    "paragraphs": 1127,
+    "characters": 463344
+  },
+  {
+    "code": "Ed",
+    "lang": "pt",
+    "title": "Educa\u00e7\u00e3o",
+    "book_id": 1948,
+    "file": "Ed_pt.txt",
+    "paragraphs": 1106,
+    "characters": 452903
+  },
+  {
+    "code": "EvBur",
+    "lang": "my",
+    "title": "\u101d\u1019\u103a\u1038\u1019\u103c\u1031\u102c\u1000\u103a\u1016\u103d\u101a\u103a \u1027\u101d\u1036\u1002\u1031\u101c\u102d\u101c\u102f\u1015\u103a\u1004\u1014\u103a\u1038",
+    "book_id": 14766,
+    "file": "EvBur_my.txt",
+    "paragraphs": 2469,
+    "characters": 1416599
+  },
+  {
+    "code": "GC",
+    "lang": "ar",
+    "title": "\u0627\u0644\u0635\u0631\u0627\u0639 \u0627\u0644\u0639\u0638\u064a\u0645",
+    "book_id": 11266,
+    "file": "GC_ar.txt",
+    "paragraphs": 1882,
+    "characters": 1046582
+  },
+  {
+    "code": "GC",
+    "lang": "en",
+    "title": "The Great Controversy",
+    "book_id": 132,
+    "file": "GC_en.txt",
+    "paragraphs": 1921,
+    "characters": 1377958
+  },
+  {
+    "code": "GC",
+    "lang": "es",
+    "title": "El Conflicto de los Siglos",
+    "book_id": 1710,
+    "file": "GC_es.txt",
+    "paragraphs": 1959,
+    "characters": 1496334
+  },
+  {
+    "code": "GC",
+    "lang": "fr",
+    "title": "La Trag\u00e9die des Si\u00e8cles",
+    "book_id": 192,
+    "file": "GC_fr.txt",
+    "paragraphs": 2034,
+    "characters": 1422432
+  },
+  {
+    "code": "GC",
+    "lang": "pt",
+    "title": "O Grande Conflito",
+    "book_id": 11125,
+    "file": "GC_pt.txt",
+    "paragraphs": 1832,
+    "characters": 1320485
+  },
+  {
+    "code": "GCB58",
+    "lang": "my",
+    "title": "Great Controversy 1858",
+    "book_id": 13963,
+    "file": "GCB58_my.txt",
+    "paragraphs": 342,
+    "characters": 346253
+  },
+  {
+    "code": "GCBur",
+    "lang": "my",
+    "title": "\u1019\u103b\u1000\u103a\u1019\u103e\u1031\u102c\u1000\u103a\u1000\u102c\u101c\u1019\u103e \u1011\u102c\u101d\u101b\u1000\u102c\u101c\u101e\u102d\u102f\u1037",
+    "book_id": 14339,
+    "file": "GCBur_my.txt",
+    "paragraphs": 2262,
+    "characters": 862401
+  },
+  {
+    "code": "GCTh",
+    "lang": "th",
+    "title": "\u0e2a\u0e07\u0e04\u0e23\u0e32\u0e21\u0e04\u0e23\u0e31\u0e49\u0e07\u0e22\u0e34\u0e48\u0e07\u0e43\u0e2b\u0e0d\u0e48",
+    "book_id": 13969,
+    "file": "GCTh_th.txt",
+    "paragraphs": 347,
+    "characters": 301696
+  },
+  {
+    "code": "GCth17",
+    "lang": "th",
+    "title": "\u0e2a\u0e07\u0e04\u0e23\u0e32\u0e21\u0e04\u0e23\u0e31\u0e49\u0e07\u0e22\u0e34\u0e48\u0e07\u0e43\u0e2b\u0e0d\u0e48",
+    "book_id": 14081,
+    "file": "GCth17_th.txt",
+    "paragraphs": 1874,
+    "characters": 1338546
+  },
+  {
+    "code": "GrHTh",
+    "lang": "th",
+    "title": "\u0e1b\u0e25\u0e32\u0e22\u0e17\u0e32\u0e07 \u0e41\u0e2b\u0e48\u0e07\u0e04\u0e27\u0e32\u0e21\u0e2b\u0e27\u0e31\u0e07",
+    "book_id": 13998,
+    "file": "GrHTh_th.txt",
+    "paragraphs": 363,
+    "characters": 173544
+  },
+  {
+    "code": "HFB",
+    "lang": "my",
+    "title": "\u1019\u103b\u1000\u103a\u1019\u103e\u1031\u102c\u1000\u103a\u1000\u102c\u101c \u1019\u103e \u1011\u102c\u101d\u101b\u1000\u102c\u101c\u101e\u102d\u102f\u1037",
+    "book_id": 13931,
+    "file": "HFB_my.txt",
+    "paragraphs": 1537,
+    "characters": 856794
+  },
+  {
+    "code": "MH",
+    "lang": "en",
+    "title": "The Ministry of Healing",
+    "book_id": 135,
+    "file": "MH_en.txt",
+    "paragraphs": 1664,
+    "characters": 695206
+  },
+  {
+    "code": "MH",
+    "lang": "es",
+    "title": "El Ministerio de Curaci\u00f3n",
+    "book_id": 1757,
+    "file": "MH_es.txt",
+    "paragraphs": 1656,
+    "characters": 709900
+  },
+  {
+    "code": "MH",
+    "lang": "fr",
+    "title": "Le Minist\u00e8re de la Gu\u00e9rison",
+    "book_id": 195,
+    "file": "MH_fr.txt",
+    "paragraphs": 1633,
+    "characters": 713796
+  },
+  {
+    "code": "MH",
+    "lang": "pt",
+    "title": "A Ci\u00eancia do Bom Viver (condensado)",
+    "book_id": 1808,
+    "file": "MH_pt.txt",
+    "paragraphs": 1245,
+    "characters": 569522
+  },
+  {
+    "code": "MHTH",
+    "lang": "th",
+    "title": "\u0e41\u0e1e\u0e17\u0e22\u0e4c\u0e1c\u0e39\u0e49\u0e1b\u0e23\u0e30\u0e40\u0e2a\u0e23\u0e34\u0e10",
+    "book_id": 12468,
+    "file": "MHTH_th.txt",
+    "paragraphs": 1615,
+    "characters": 679725
+  },
+  {
+    "code": "MHTh",
+    "lang": "th",
+    "title": "\u0e1a\u0e2b\u0e31\u0e28\u0e08\u0e23\u0e23\u0e22\u0e4c\u0e41\u0e2b\u0e48\u0e2d\u0e01\u0e32\u0e23\u0e23\u0e31\u0e01\u0e29\u0e32",
+    "book_id": 14139,
+    "file": "MHTh_th.txt",
+    "paragraphs": 1692,
+    "characters": 774876
+  },
+  {
+    "code": "MYPTh",
+    "lang": "th",
+    "title": "\u0e02\u0e48\u0e32\u0e27\u0e1b\u0e23\u0e30\u0e40\u0e2a\u0e23\u0e34\u0e10\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e40\u0e22\u0e32\u0e27\u0e0a\u0e19",
+    "book_id": 14093,
+    "file": "MYPTh_th.txt",
+    "paragraphs": 1400,
+    "characters": 627355
+  },
+  {
+    "code": "PK",
+    "lang": "ar",
+    "title": "\u0627\u0644\u0623\u0646\u0628\u064a\u0627\u0621 \u0648\u0627\u0644\u0645\u0644\u0648\u0643",
+    "book_id": 12411,
+    "file": "PK_ar.txt",
+    "paragraphs": 1875,
+    "characters": 708621
+  },
+  {
+    "code": "PK",
+    "lang": "en",
+    "title": "Prophets and Kings",
+    "book_id": 88,
+    "file": "PK_en.txt",
+    "paragraphs": 1962,
+    "characters": 992498
+  },
+  {
+    "code": "PK",
+    "lang": "es",
+    "title": "Profetas y Reyes",
+    "book_id": 217,
+    "file": "PK_es.txt",
+    "paragraphs": 1913,
+    "characters": 1000728
+  },
+  {
+    "code": "PK",
+    "lang": "fr",
+    "title": "Proph\u00e8tes et Rois",
+    "book_id": 219,
+    "file": "PK_fr.txt",
+    "paragraphs": 1792,
+    "characters": 1021571
+  },
+  {
+    "code": "PK",
+    "lang": "pt",
+    "title": "Profetas e Reis",
+    "book_id": 1816,
+    "file": "PK_pt.txt",
+    "paragraphs": 1894,
+    "characters": 978619
+  },
+  {
+    "code": "PP",
+    "lang": "en",
+    "title": "Patriarchs and Prophets",
+    "book_id": 84,
+    "file": "PP_en.txt",
+    "paragraphs": 2347,
+    "characters": 1563785
+  },
+  {
+    "code": "PP",
+    "lang": "es",
+    "title": "Historia de los Patriarcas y Profetas",
+    "book_id": 1704,
+    "file": "PP_es.txt",
+    "paragraphs": 2547,
+    "characters": 1605259
+  },
+  {
+    "code": "PP",
+    "lang": "fr",
+    "title": "Patriarches et Proph\u00e8tes",
+    "book_id": 212,
+    "file": "PP_fr.txt",
+    "paragraphs": 2427,
+    "characters": 1483594
+  },
+  {
+    "code": "PP",
+    "lang": "pt",
+    "title": "Patriarcas e Profetas",
+    "book_id": 1815,
+    "file": "PP_pt.txt",
+    "paragraphs": 2319,
+    "characters": 1532558
+  },
+  {
+    "code": "SC",
+    "lang": "ar",
+    "title": "\u0637\u0631\u064a\u0642 \u0627\u0644\u062d\u064a\u0627\u0629",
+    "book_id": 11711,
+    "file": "SC_ar.txt",
+    "paragraphs": 280,
+    "characters": 128560
+  },
+  {
+    "code": "SC",
+    "lang": "en",
+    "title": "Steps to Christ",
+    "book_id": 108,
+    "file": "SC_en.txt",
+    "paragraphs": 280,
+    "characters": 169615
+  },
+  {
+    "code": "SC",
+    "lang": "es",
+    "title": "El Camino a Cristo",
+    "book_id": 1749,
+    "file": "SC_es.txt",
+    "paragraphs": 280,
+    "characters": 177155
+  },
+  {
+    "code": "SC",
+    "lang": "fr",
+    "title": "Vers J\u00e9sus",
+    "book_id": 235,
+    "file": "SC_fr.txt",
+    "paragraphs": 303,
+    "characters": 182273
+  },
+  {
+    "code": "SC",
+    "lang": "my",
+    "title": "\u101e\u102f\u1001\u1001\u103a\u1019\u1039\u1038\u101e\u102c\u101c\u1019\u1039\u1038\u100a\u108a\u1014\u1039..",
+    "book_id": 11707,
+    "file": "SC_my.txt",
+    "paragraphs": 276,
+    "characters": 222097
+  },
+  {
+    "code": "SC",
+    "lang": "pt",
+    "title": "Caminho a Cristo",
+    "book_id": 11121,
+    "file": "SC_pt.txt",
+    "paragraphs": 272,
+    "characters": 170437
+  },
+  {
+    "code": "ThSC",
+    "lang": "th",
+    "title": "\u0e40\u0e04\u0e25\u0e47\u0e14\u0e25\u0e31\u0e1a\u0e41\u0e2b\u0e48\u0e07\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e38\u0e02",
+    "book_id": 14099,
+    "file": "ThSC_th.txt",
+    "paragraphs": 284,
+    "characters": 179756
+  }
+]
